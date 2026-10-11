@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>KisanSetu (किसान सेतु) - Transparent Mandi Prices & AI Agri Terminal</title>
+  <meta name="description" content="Pan-India agritech terminal for farmers inspired by Zerodha and Groww. Real-time APMC Mandi modal prices, urban retail spreads, cold storage availability, and AI agronomic advisory." />
+  <meta name="keywords" content="mandi price, kisan, farmer, apmc, retail price, crop price spread, soil testing, fertilizer advisory, crop yield, google ai agent builder" />
+  <meta name="theme-color" content="#0F172A" />
+
+  <!-- Google Fonts: Inter, Outfit & Noto Sans Devanagari for clean FinTech typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/src/css/animations.css" />
+  <link rel="stylesheet" href="/src/css/style.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Header (Modeled after Zerodha Kite & Groww) -->
+  <header class="site-nav" role="banner">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo & Brand -->
+        <a href="#" class="brand-wrap" id="nav-brand-logo" aria-label="KisanSetu Home">
+          <div class="brand-logo-icon">🌾</div>
+          <div class="brand-text-col">
+            <span class="brand-name">
+              KisanSetu
+              <span class="brand-badge" id="brand-badge-tag">लाइव कृषि टर्मिनल</span>
+            </span>
+            <span class="brand-tagline" id="brand-tagline-text">Real-Time Mandi Prices • Pan-India Discovery • Smart Logistics</span>
+          </div>
+        </a>
+
+        <!-- Action Controls: Language toggle, Voice readout -->
+        <div class="nav-actions">
+          <!-- Bilingual Toggle -->
+          <div class="lang-toggle-group" role="group" aria-label="Language selection">
+            <button type="button" id="btn-lang-hi" class="lang-btn active">हिन्दी</button>
+            <button type="button" id="btn-lang-en" class="lang-btn">English</button>
+          </div>
+
+          <!-- Admin Price Update Console (Team/Admin Managed) -->
+          <button type="button" id="btn-admin-price-update" class="btn-nav-admin" title="टीम / एडमिन मंडी भाव अपडेट" aria-label="Team Mandi Price Console">
+            <span>🛠️</span>
+            <span id="txt-nav-admin">एडमिन मंडी अपडेट</span>
+          </button>
+
+          <!-- User Profile & Enrollment Modal Button -->
+          <button type="button" id="btn-user-profile" class="btn-user-profile-badge" aria-label="User Account Profile">
+            <span class="user-avatar-dot">👨‍🌾</span>
+            <span id="txt-user-profile-name">रमेश पाटिल (किसान)</span>
+          </button>
+
+          <!-- Global Kisan Vaani Voice Advisory Button -->
+          <button type="button" id="btn-global-voice" class="btn-global-voice" aria-label="Open voice market assistant">
+            <span class="voice-wave-anim">🎙️</span>
+            <span id="txt-global-voice">किसान सहायक</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Financial Market Indices Ticker Tape -->
+  <div id="live-ticker-container" class="live-ticker-bar">
+    <!-- Populated dynamically by liveTicker.js -->
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="container" id="main-content" role="main">
+
+    <!-- Hero & Market Overview Section -->
+    <section class="hero-section" id="section-hero" aria-label="Market Overview">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="hero-tag-badge">
+            <span class="pulse-indicator">●</span>
+            <span id="hero-hack-tag">🌾 KisanSetu Agri Terminal</span>
+          </div>
+          <h1 class="hero-title" id="hero-title-text">पारदर्शी मंडी भाव, उचित मुनाफा — हर किसान का अधिकार।</h1>
+          <p class="hero-subtitle" id="hero-sub-text">
+            देश की प्रमुख एपीएमसी मंडियों के मॉडल भाव देखें, शहरों की खुदरा कीमतों से तुलना करें और मांग वाले शहरों में सीधी बिक्री से अधिक मुनाफा कमाएं।
+          </p>
+          <div class="hero-actions-row">
+            <a href="#section-crop-doctor" class="btn-primary-action" id="hero-btn-crop-doctor">
+              <span id="hero-btn-crop-doctor-text">🌱 अपनी जमीन व फसल जांचें</span>
+            </a>
+            <a href="#section-selling-advisor" class="btn-secondary-action" id="hero-btn-selling-advisor">
+              <span id="hero-btn-selling-advisor-text">⚖️ कहाँ बेचूं? (दलाल बनाम सीधी बिक्री)</span>
+            </a>
+            <a href="#section-schemes" class="btn-secondary-action" id="hero-btn-schemes">
+              <span id="hero-btn-schemes-text">🏛️ सरकारी योजनाएं व 4% ऋण</span>
+            </a>
+            <a href="#section-prices" class="btn-secondary-action" id="hero-btn-prices">
+              <span id="hero-btn-prices-text">📊 लाइव मार्केट वॉच</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal High-Level Market Telemetry Grid -->
+        <div class="hero-telemetry-grid">
+          <div class="telemetry-stat-card">
+            <span class="t-stat-label" id="t-stat-lbl-1">🏛️ सक्रिय मंडियां</span>
+            <span class="t-stat-val" id="t-stat-val-1">2,450+ APMCs</span>
+            <span class="t-stat-sub text-green" id="t-stat-sub-1">100% ई-नाम लाइव सिंक</span>
+          </div>
+          <div class="telemetry-stat-card">
+            <span class="t-stat-label" id="t-stat-lbl-2">📦 आज की कुल आवक</span>
+            <span class="t-stat-val" id="t-stat-val-2">1.8M Quintals</span>
+            <span class="t-stat-sub text-green" id="t-stat-sub-2">कल से +4.6% अधिक</span>
+          </div>
+          <div class="telemetry-stat-card">
+            <span class="t-stat-label" id="t-stat-lbl-3">⚖️ बिचौलियों का मार्जिन</span>
+            <span class="t-stat-val" id="t-stat-val-3">48.2% Avg Spread</span>
+            <span class="t-stat-sub text-red" id="t-stat-sub-3">सीधी बिक्री से ₹18/किग्रा बचत</span>
+          </div>
+          <div class="telemetry-stat-card">
+            <span class="t-stat-label" id="t-stat-lbl-4">🏬 उपलब्ध कोल्ड स्पेस</span>
+            <span class="t-stat-val" id="t-stat-val-4">142,000 MT</span>
+            <span class="t-stat-sub text-blue" id="t-stat-sub-4">ई-एनडब्ल्यूआर बंधक ऋण</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zerodha/Groww Style Omnisearch Bar for any Mandi, Crop, or State -->
+    <div id="universal-search-container" class="universal-search-wrap">
+      <!-- Rendered dynamically by universalSearchBar.js -->
+    </div>
+
+    <!-- Quick Navigation First Ribbon -->
+    <nav class="main-tabs-nav" aria-label="Feature navigation">
+      <button type="button" class="nav-tab-btn active" data-target="section-hero">
+        <span>🏠</span>
+        <span id="nav-tab-home-text">Dashboard</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-crop-doctor">
+        <span>🌱</span>
+        <span id="nav-tab-crop-doctor-text">Land & Crop Doctor</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-selling-advisor">
+        <span>⚖️</span>
+        <span id="nav-tab-selling-advisor-text">Where to Sell (Mandi vs Direct Consumer)</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-schemes">
+        <span>🏛️</span>
+        <span id="nav-tab-schemes-text">Govt Schemes & 4% Loans</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-prices">
+        <span>📊</span>
+        <span id="nav-tab-prices-text">Market Watch</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-map">
+        <span>🗺️</span>
+        <span id="nav-tab-map-text">Logistics Map</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-weather">
+        <span>🌦️</span>
+        <span id="nav-tab-weather-text">Weather & Small Plots</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-pesticides">
+        <span>🛡️</span>
+        <span id="nav-tab-pesticides-text">Pesticides & Protection</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-procurement">
+        <span>🛒</span>
+        <span id="nav-tab-procurement-text">Direct Buyer Hub</span>
+      </button>
+      <button type="button" class="nav-tab-btn" data-target="section-pipeline">
+        <span>⚡</span>
+        <span id="nav-tab-pipeline-text">AI Architecture</span>
+      </button>
+    </nav>
+
+    <!-- SECTION: Land Photo & Weather Crop Suitability Doctor -->
+    <section id="section-crop-doctor" class="content-section page-view-section" aria-label="Land Photo & Weather Crop Doctor">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="crop-suitability-doctor-container">
+        <!-- Rendered dynamically by cropSuitabilityDoctor.js -->
+      </div>
+    </section>
+
+    <!-- SECTION: Selling Decision Engine (Dalal vs Direct Consumer) -->
+    <section id="section-selling-advisor" class="content-section page-view-section" aria-label="Where to Sell: Mediator vs Direct Consumer">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="selling-advisor-container">
+        <!-- Rendered dynamically by sellingAdvisor.js -->
+      </div>
+    </section>
+
+    <!-- SECTION: Pan-India Government Schemes, Subsidies & Loans Portal -->
+    <section id="section-schemes" class="content-section page-view-section" aria-label="Pan-India Government Schemes & Loans">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="farmer-schemes-portal-container">
+        <!-- Rendered dynamically by farmerSchemesPortal.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 1: Regional Mandi vs Consumer Price Intelligence -->
+    <section id="section-prices" class="content-section page-view-section" aria-labelledby="price-section-title">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <div>
+            <h2 class="section-heading" id="price-section-title">फसल मार्केट वॉच एवं भाव विश्लेषण</h2>
+            <p class="section-desc" id="price-section-sub">एपीएमसी मंडी भाव बनाम शहरी खुदरा बाजार (प्रति क्विंटल एवं प्रति किलो) और बिचौलियों के मार्जिन का सीधा विश्लेषण।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Smart Mandi Arbitrage & Route Profit Optimizer -->
+      <div id="arbitrage-optimizer-container" style="margin-bottom: 24px;">
+        <!-- Rendered dynamically by arbitrageOptimizer.js -->
+      </div>
+
+      <!-- Price Cards List Container -->
+      <div class="price-cards-grid" id="price-cards-list">
+        <!-- Rendered dynamically by priceRenderer.js -->
+      </div>
+    </section>
+
+    <!-- SECTION: Regional Demand & Warehouse Map -->
+    <section id="section-map" class="content-section page-view-section" aria-label="National Mandi & Logistics Map">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="map-section-container">
+        <!-- Rendered dynamically by mapRenderer.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: Smart Crop & Soil Doctor (Yield & Fertilizer Advisor) -->
+    <section id="section-advisor" class="content-section page-view-section" aria-labelledby="advisor-section-title">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div class="section-header">
+        <h2 class="section-heading" id="advisor-section-title">स्मार्ट फसल व मिट्टी पोषण कैलकुलेटर</h2>
+        <p class="section-desc" id="advisor-section-sub">मिट्टी के प्रकार, स्थानीय मौसम और फसल के आधार पर संतुलित खाद मात्रा और संभावित पैदावार का सटीक अनुमान पाएं।</p>
+      </div>
+
+      <!-- AI Photo Soil & Plant Diagnostics + Lab Appointment Booking -->
+      <div id="visual-soil-doctor-container" style="margin-bottom: 24px;">
+        <!-- Rendered dynamically by visualSoilDoctor.js -->
+      </div>
+
+      <div id="advisor-form-container">
+        <!-- Rendered dynamically by advisorForm.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: Volunteer & Kisan Mitra Ground-Truth Hub -->
+    <section id="section-volunteer" class="content-section page-view-section" aria-label="Ground-Truth Field Reports">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="volunteer-section-container">
+        <!-- Rendered dynamically by volunteerModal.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 5: Direct Farmer-to-Buyer Trade Portal -->
+    <section id="section-procurement" class="content-section page-view-section" aria-label="Direct Farmer to Buyer Trade Hub">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="buyer-trade-hub-container">
+        <!-- Rendered dynamically by buyerTradeHub.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 6: Harvest Weather & Small-Plot Micro-Farming Planner -->
+    <section id="section-weather" class="content-section page-view-section" aria-label="Harvesting Weather & Small Plot Planner">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="weather-harvest-planner-container">
+        <!-- Rendered dynamically by weatherHarvestPlanner.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 7: Crop Protection & Pesticide Prescription Center -->
+    <section id="section-pesticides" class="content-section page-view-section" aria-label="Crop Protection & Pesticides">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="pesticide-advisor-container">
+        <!-- Rendered dynamically by pesticideAdvisor.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 4: Google AI Agent Builder Pipeline Showcase (Hackathon Demonstration) -->
+    <section id="section-pipeline" class="content-section page-view-section" aria-label="Google AI Agent Builder Architecture">
+      <div class="view-breadcrumb-bar">
+        <button type="button" class="btn-back-home" data-target="section-hero">
+          ← <span class="txt-back-home">Back to Dashboard</span>
+        </button>
+        <button type="button" class="btn-toggle-all-sections">
+          👁️ <span class="txt-toggle-all">Show All Sections</span>
+        </button>
+      </div>
+
+      <div id="agent-pipeline-container">
+        <!-- Rendered dynamically by agentBuilderTab.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <span class="footer-brand" id="footer-brand-text">🌾 KisanSetu (किसान सेतु)</span>
+          <p class="footer-hackathon-note" id="footer-hackathon-note">Built for Google AI Agent Builder Hackathon • Non-profit public interest initiative for Indian farmers</p>
+        </div>
+        <div class="footer-copy">
+          <span id="footer-sources-text">Data Sources: Agmarknet APMC • eNAM • OpenWeather • Verified Farmer Network</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
